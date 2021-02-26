@@ -62,7 +62,7 @@ app.delete("/movies", (req, res) => {
   }
 });
 
-app.post('*', function(req, res){
+app.all('*', function(req, res){
    res.status(403).end();
 });
 
