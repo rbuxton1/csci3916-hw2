@@ -66,6 +66,6 @@ app.delete("/movies", (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(80, () => {
   console.log("listening, token is " + token);
 });
