@@ -37,10 +37,6 @@ app.post("/signin", (req, res) => {
   }
 });
 
-app.get("/secret", ejwt({ secret: token, algorithms: ['HS256'] }), (req, res) => {
-  res.send(req.user);
-});
-
 app.get("/movies", (req, res) => {
   var {headers, query} = req;
   res.send({status: 200, message: "GET movies", headers, query, env: token});
@@ -64,6 +60,10 @@ app.delete("/movies", (req, res) => {
   } else {
     res.sendStatus(401);
   }
+});
+
+app.post('*', function(req, res){
+   res.status(403).end();
 });
 
 app.listen(process.env.PORT || 8008, () => {
